@@ -12,6 +12,12 @@
 // מייבאים את עמוד הפתיחה ואת שאר העמודים (לדוגמה Page2)
 import OpenPage from './components/OpenPage.vue';
 import PageTwo from './components/PageTwo.vue';
+import Importance from './components/Importance.vue';
+import ShiftPage from './components/ShiftPage.vue';
+import RedOrderPage from './components/RedOrderPage.vue';
+import FoldersPage from './components/FoldersPage.vue';
+// import ComplaintPage from './components/ComplaintPage.vue';
+
 // import Page2 from './components/Page2.vue'; 
 
 export default {
@@ -19,6 +25,11 @@ export default {
   components: {
     OpenPage,
     PageTwo,
+    Importance,
+    ShiftPage,
+    RedOrderPage,
+    FoldersPage,
+    // ComplaintPage,
     // Page2
   },
   data() {
@@ -27,6 +38,11 @@ export default {
       pageOrder: [
         "OpenPage",
          "PageTwo",
+         "Importance",
+         "ShiftPage",
+         "RedOrderPage",
+         "FoldersPage"
+        //  "ComplaintPage"
         // "Page3"
       ],
       currentPageIndex: 0
@@ -75,6 +91,10 @@ export default {
 @font-face {
   font-family: "Assistant-Bold";
   src: url('./assets/fonts/Assistant/Assistant-Bold.ttf');
+}
+@font-face {
+  font-family: "ElonWiess";
+  src: url('./assets/fonts/OHElonWiess-Regular.ttf');
 }
 
 * {

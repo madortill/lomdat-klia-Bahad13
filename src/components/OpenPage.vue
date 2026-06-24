@@ -1,5 +1,6 @@
 <template>
   <div class="open-page-container">
+    
     <img src="@/assets/media/background.svg" alt="background" class="bg-image" />
     
     <div class="start-btn" @click="$emit('next')">
@@ -7,8 +8,9 @@
     </div>
 
     <div class="start-text">
-      <h1 class="start-text-title">לומדת אסמכתאות כליאה</h1>
-      <p class=".start-text-fill">בית הספר למשטרה צבאית</p>
+      <h1 class="start-text-title">לומדת אסמכתאות </h1>
+      <h1 class="start-text-title">כליאה</h1>
+      <p class="start-text-fill">בית הספר למשטרה צבאית</p>
 
     </div>
   </div>
@@ -49,15 +51,22 @@ export default {
 .start-text {
   position: relative;
   z-index: 2;
+  margin-left: 2vw;
   background-color: rgba(255, 255, 255, 0.6); /* 60% לבן */
   border-radius: 5%;
-  padding: 12vw; 
+  padding: 5vw; 
   font-family: "OH_ElonWiess" ;
 }
 
-.start-text-title {}
+.start-text-title {
+  font-family: "ElonWiess";
+  font-size: 5rem;
+  text-align: center;
+}
 
-.start-text-fill {}
+.start-text-fill {
+  text-align: center;
+}
 
 /* כפתור כניסה - ממוקם כעת באופן מוחלט ביחס לקונטיינר כדי שיהיה בצד שמאל */
 .start-btn {

@@ -26,7 +26,10 @@
     </main>
 
     <footer class="layout-footer">
-      <div class="next-btn" @click="nextPage">
+      <div 
+        :class="['next-btn', { 'disabled': isNextDisabled }]" 
+        @click="nextPage"
+      >
         <span class="next-btn-text">{{ nextText }}</span>
       </div>
     </footer>
@@ -38,6 +41,13 @@
 export default {
   name: "PageLayout",
   emits: ["next", "back"],
+  props: {
+    // ה-prop החדש שמנהל את חסימת כפתור הבא
+    isNextDisabled: {
+      type: Boolean,
+      default: false
+    }
+  },
   data() {
     return {
       backText: "חזור",
@@ -46,6 +56,8 @@ export default {
   },
   methods: {
     nextPage() {
+      // אם הכפתור חסום, אנחנו עוצרים ולא שולחים את האיוונט לאבא
+      if (this.isNextDisabled) return;
       this.$emit("next");
     },
     goBack() {
@@ -76,7 +88,7 @@ export default {
   width: 100%;
   display: flex;
   justify-content: space-between;
-  align-items: center; /* מיישר את הכל אנכית לאותו הגובה */
+  align-items: center;
   z-index: 10;
 }
 
@@ -90,7 +102,7 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
-  flex: 2; /* נותן לאזור האמצעי יותר מקום לטקסט */
+  flex: 2;
 }
 
 .header-left {
@@ -148,11 +160,11 @@ export default {
   z-index: 1;
 }
 
-/* אזור תחתון - כפתור הבא תמיד בצד שמאל */
+/* אזור תחתון - כפתור הבא */
 .layout-footer {
   width: 100%;
   display: flex;
-  justify-content: flex-end; /* בגלל ה-direction: rtl, ה-flex-end דוחף את זה שמאלה לקצה */
+  justify-content: flex-end;
   z-index: 10;
 }
 
@@ -161,7 +173,7 @@ export default {
   max-width: 13rem;
   height: 7vh;
   max-height: 4.5rem;
-  background-color: #992211; /* צבע אדום-בורדו מהתמונה */
+  background-color: #992211;
   border-radius: 5rem;
   display: flex;
   justify-content: center;
@@ -180,5 +192,18 @@ export default {
 .next-btn:hover {
   transform: scale(1.08);
   background-color: #b52b18;
+}
+
+/* --- העיצוב החדש למצב חסום ואפור --- */
+.next-btn.disabled {
+  background-color: #7a7a7a !important; /* צבע אפור */
+  cursor: not-allowed !important;
+  pointer-events: none; /* מונע לחיצות ואירועי Hover */
+  transform: none !important; /* מונע את ה-scale של ה-hover */
+  box-shadow: none;
+}
+
+.next-btn.disabled .next-btn-text {
+  color: #b0b0b0; /* טקסט אפור בהיר יותר */
 }
 </style>
