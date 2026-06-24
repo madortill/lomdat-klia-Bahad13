@@ -23,7 +23,7 @@ export default {
 <style>
 .four {
     width:80vw;
-    height: 80vh;
+    height: 81vh;
 }
 
 .f-img{
