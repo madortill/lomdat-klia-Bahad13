@@ -10,7 +10,7 @@
     </div>
 
     <div class="soldier">
-      <img src="@/assets/media\Gemini_Generated_Image_ytg63cytg63cytg6 1.svg" class="s-img" alt="soldier" />
+      <img src="@/assets/media\Gemini_Generated_Image_ytg63cytg63cytg6.svg" class="s-img" alt="soldier" />
     </div>
 
   </div>
