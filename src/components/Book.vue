@@ -42,15 +42,7 @@
   import { ref, onMounted, onUnmounted, nextTick } from 'vue';
   import { PageFlip } from 'page-flip';
   
-  // --- הגדרת ה-Props וה-Emits (מאוחדים ושקינים) ---
-  defineProps({
-    showNextBtn: Boolean,
-    doneReading: Boolean
-  });
-  
-  const emit = defineEmits(['update:showNextBtn', 'update:doneReading']);
-  
-  // --- ייבוא הקבצים ---
+  // --- 1. כל ה-Imports חייבים להיות כאן בראש הקובץ ---
   import coverImg from '@/assets/media/pic.png';
   import page1Img from '@/assets/media/pic.png';
   import page2Img from '@/assets/media/pic.png';
@@ -59,17 +51,25 @@
   import page5Img from '@/assets/media/pic.png';
   import medicalPdf from '@/assets/media/pic.png';
   
+  // --- 2. הגדרת ה-Props וה-Emits ---
+  defineProps({
+    showNextBtn: Boolean,
+    doneReading: Boolean
+  });
+  
+  const emit = defineEmits(['update:showNextBtn', 'update:doneReading']);
+  
+  // --- 3. משתנים ומערכים ---
   // מערך הדפים (בסדר הפוך עבור קריאה מימין לשמאל)
   const pages = [page5Img, page4Img, page3Img, page2Img, page1Img, coverImg];
   
-  // --- משתנים ריאקטיביים ---
   const bookContainer = ref(null);
   let pageFlipInstance = null;
   
   const dimensions = ref({ width: 350, height: 500 });
   const bookReady = ref(false);
   
-  // --- ניהול רספונסיביות ---
+  // --- 4. פונקציות וניהול רספונסיביות ---
   const handleResize = () => {
     if (window.innerWidth <= 530) {
       dimensions.value = { width: 210, height: 300 };
@@ -84,7 +84,7 @@
     }
   };
   
-  // --- מאזין יחיד ומאוחד לפיכת דף ---
+  // מאזין יחיד ומאוחד לפיכת דף
   const onPageFlip = (e) => {
     const currentPage = e.data;
     // עמוד 0 הוא העמוד האחרון בספר
@@ -97,7 +97,7 @@
     }
   };
   
-  // --- אתחול הספר (Lifecycle) ---
+  // --- 5. Lifecycle Hooks ---
   onMounted(async () => {
     handleResize();
     window.addEventListener('resize', handleResize);
@@ -142,35 +142,33 @@
     e.target.style.fill = 'transparent';
   };
   </script>
-
-
-<style scoped>
-/* תוכל להעביר לכאן את התוכן של Book.css או להמשיך לייבא אותו גלובלית */
-.book.hidden {
-  opacity: 0;
-  visibility: hidden;
-}
-.book.visible {
-  opacity: 1;
-  visibility: visible;
-  transition: opacity 0.3s ease;
-}
-.page-with-overlay {
-  position: relative;
-  width: 100%;
-  height: 100%;
-}
-.hotpath-overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 10;
-}
-.page-img {
-  width: 100%;
-  height: 100%;
-  display: block;
-}
-</style>
+  
+  <style scoped>
+  .book.hidden {
+    opacity: 0;
+    visibility: hidden;
+  }
+  .book.visible {
+    opacity: 1;
+    visibility: visible;
+    transition: opacity 0.3s ease;
+  }
+  .page-with-overlay {
+    position: relative;
+    width: 100%;
+    height: 100%;
+  }
+  .hotpath-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 10;
+  }
+  .page-img {
+    width: 100%;
+    height: 100%;
+    display: block;
+  }
+  </style>
