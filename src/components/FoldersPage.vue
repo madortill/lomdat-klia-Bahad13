@@ -2,10 +2,10 @@
   <page-layout @next="$emit('next')" @back="$emit('back')">
     <template #main-content>
         <div class="four">
-        <img src="@/assets/media/Group 10.svg" class="f-img">
-        <img src="@/assets/media/Group 11.svg" class="f-img">
-        <img src="@/assets/media/Group 12.svg" class="f-img">
-        <img src="@/assets/media/Group 13.svg" class="f-img">
+        <img src="@/assets/media/Group10.svg" class="f-img">
+        <img src="@/assets/media/Group11.svg" class="f-img">
+        <img src="@/assets/media/Group12.svg" class="f-img">
+        <img src="@/assets/media/Group13.svg" class="f-img">
     </div>
     </template>
   </page-layout>
