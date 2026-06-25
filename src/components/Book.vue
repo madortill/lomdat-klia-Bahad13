@@ -51,13 +51,13 @@
   const emit = defineEmits(['update:showNextBtn', 'update:doneReading']);
   
   // --- ייבוא הקבצים ---
-  import coverImg from '@/assets/images/book/new-cover.png';
-  import page1Img from '@/assets/images/book/new-page1.png';
-  import page2Img from '@/assets/images/book/new-page2.png';
-  import page3Img from '@/assets/images/book/new-page3.png';
-  import page4Img from '@/assets/images/book/new-page4.png';
-  import page5Img from '@/assets/images/book/new-page5.png';
-  import medicalPdf from '@/assets/images/your-new-file.pdf';
+  import coverImg from '@/assets/media/pic.png';
+  import page1Img from '@/assets/media/pic.png';
+  import page2Img from '@/assets/media/pic.png';
+  import page3Img from '@/assets/media/pic.png';
+  import page4Img from '@/assets/media/pic.png';
+  import page5Img from '@/assets/media/pic.png';
+  import medicalPdf from '@/assets/media/pic.png';
   
   // מערך הדפים (בסדר הפוך עבור קריאה מימין לשמאל)
   const pages = [page5Img, page4Img, page3Img, page2Img, page1Img, coverImg];
