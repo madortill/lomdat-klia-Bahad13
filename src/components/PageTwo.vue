@@ -66,6 +66,7 @@
   /* מונע מהטקסט לצאת החוצה במקרה של מילים ארוכות במיוחד */
   overflow-wrap: break-word; 
   word-wrap: break-word;
+  top: -1rem;
 }
 
 /* עיצוב פנימי לכותרת ולטקסט */

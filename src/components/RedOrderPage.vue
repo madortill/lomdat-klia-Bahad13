@@ -65,7 +65,7 @@ export default {
 
 .b-image {
   position: absolute;
-  top: 8rem;
+  top: 7rem;
   left: 32vw; /* מרכז את הדף */
   width: 36%;
   height: 83%;

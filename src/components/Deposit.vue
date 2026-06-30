@@ -3,11 +3,11 @@
         <template #main-content>
           <div class="soldier-layout">
     
-    <div class="speech-bubble">
-      <h3>תעודת העברה של כלוא</h3>
-      <p class="speech-p">     זהו טופס שאותו ממלאים כאשר מעבירים את החייל למקום שהוא מחוץ לחדר המשמר לדוגמה:</p>
-      <p>    כלא צבאי , הפנייה רפואית , בית דין וכו'</p>
-      <p>טופס זה מתאר את אופיו ועברו של החייל וכך המד"כ המלווה יוכל להתאים את התנהגותו לכלוא.</p>
+    <div class="speech-bubble-d">
+      <h3>   טופס פיקדון</h3>
+      <p class="speech-p">     טופס בו נרשמים כל הפריטים אותם הפקידה החייל עם קבלתו למעצר.</p>
+      <p>    החייל חותם על הטופס על מנת שתהיה לנו אסמכתא שאלו הפריטים שהפקיד בלבד עם תיאור מצבם הנוכחי בהפקדה. בנוסף החייל מקבל עותק ממנו , וחובה עליו לשמור את טופס הפיקדון בצמוד אליו.</p>
+      <p> פרטי הפיקדון הקטן והיקר נשמרים בכספת , בעת שחרורו של החייל הוא יקבל את מה שהפקיד.</p>
     </div>
 
     <div class="soldier">
@@ -27,15 +27,15 @@
   import PageLayout from './PageLayout.vue';
   
   export default {
-    name: "ShiftPage",
+    name: "Deposit",
     components: { PageLayout },
     emits: ["next", "back"]
   }
   </script>
   
   <style scoped>
-/* --- אלמנט עוטף (הבסיס למיקומים בדסקטופ) --- */
-.soldier-layout {
+  /* אלמנט עוטף חדש שמחבר ביניהם */
+  .soldier-layout {
   position: relative;
   display: inline-block; 
   left: 20vw;
@@ -58,7 +58,7 @@
 }
 
 /* --- בועת הדיבור (במיקום ובגודל המקורי שלך) --- */
-.speech-bubble {
+.speech-bubble-d {
   position: absolute;
   top: -8vh; 
   left: -15vw; 
@@ -77,7 +77,7 @@
 }
 
 /* עיצוב הכותרת */
-.speech-bubble h3 {
+.speech-bubble-d h3 {
   margin: 0 0 20px 0;      
   font-family: "Karantina-Bold", sans-serif;
   font-size: 3.5rem;       
@@ -86,7 +86,7 @@
 }
 
 /* עיצוב פסקאות הטקסט */
-.speech-bubble p {
+.speech-bubble-d p {
   margin: 5px 0;
   font-family: "Karantina-Light", sans-serif;
   font-size: 2.5rem;       
@@ -95,7 +95,7 @@
 }
 
 /* ה"זנב" המקורי שלך */
-.speech-bubble::after {
+.speech-bubble-d::after {
   content: '';
   position: absolute;
   bottom: -25px;           
@@ -123,11 +123,11 @@
     width: 90vw; 
     height: 48vh;   /* תופס את רוב רוחב המסך */
     margin: 0 auto; /* ממרכז את הכל במסך */
-    padding-top: 4vh;
+    padding-top: 3vh;
   }
 
   /* בועת הדיבור הופכת לחלק מהזרימה ולא מרחפת */
-  .speech-bubble {
+  .speech-bubble-d {
     position: relative; 
     top: 0;             
     left: 0;            
@@ -144,7 +144,7 @@
     right: 0;      
     
     /* --- המאפיין שאחראי על הרווח המדויק ביניהם --- */
-    margin-top: 3rem; 
+    margin-top: 0.8rem; 
     
     display: flex;
     justify-content: center;
@@ -158,7 +158,7 @@
   }
 
   /* ממרכז את הזנב בתחתית הבועה שיצביע ישירות למטה אל החייל */
-  .speech-bubble::after {
+  .speech-bubble-d::after {
     right: auto;
     left: 50%;
     transform: translateX(-50%);
@@ -167,4 +167,5 @@
     border-color: rgba(239, 241, 246, 0.95) transparent transparent transparent;
   }
 }
+
 </style>

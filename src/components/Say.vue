@@ -3,11 +3,11 @@
         <template #main-content>
           <div class="soldier-layout">
     
-    <div class="speech-bubble">
-      <h3>תעודת העברה של כלוא</h3>
-      <p class="speech-p">     זהו טופס שאותו ממלאים כאשר מעבירים את החייל למקום שהוא מחוץ לחדר המשמר לדוגמה:</p>
-      <p>    כלא צבאי , הפנייה רפואית , בית דין וכו'</p>
-      <p>טופס זה מתאר את אופיו ועברו של החייל וכך המד"כ המלווה יוכל להתאים את התנהגותו לכלוא.</p>
+    <div class="speech-bubble-s">
+      <h3>   אמרת נאשם</h3>
+      <p >     אמרת נאשם נגבה מעריק / משתמט בעזרת ריאיון שנבצע עימו על פי השאלות שכתובות בטופס גביית האמרה.</p>
+      <p > <strong>   אמרה זו היא ראייה משפטית שמשמשת את הפרקליטות הצבאית בתיק של החייל ויכולה לשמש לטובתו / כנגדו במשפט.</strong></p>
+      
     </div>
 
     <div class="soldier">
@@ -27,14 +27,13 @@
   import PageLayout from './PageLayout.vue';
   
   export default {
-    name: "ShiftPage",
+    name: "Say",
     components: { PageLayout },
     emits: ["next", "back"]
   }
   </script>
   
   <style scoped>
-/* --- אלמנט עוטף (הבסיס למיקומים בדסקטופ) --- */
 .soldier-layout {
   position: relative;
   display: inline-block; 
@@ -58,7 +57,7 @@
 }
 
 /* --- בועת הדיבור (במיקום ובגודל המקורי שלך) --- */
-.speech-bubble {
+.speech-bubble-s {
   position: absolute;
   top: -8vh; 
   left: -15vw; 
@@ -77,7 +76,7 @@
 }
 
 /* עיצוב הכותרת */
-.speech-bubble h3 {
+.speech-bubble-s h3 {
   margin: 0 0 20px 0;      
   font-family: "Karantina-Bold", sans-serif;
   font-size: 3.5rem;       
@@ -86,7 +85,7 @@
 }
 
 /* עיצוב פסקאות הטקסט */
-.speech-bubble p {
+.speech-bubble-s p {
   margin: 5px 0;
   font-family: "Karantina-Light", sans-serif;
   font-size: 2.5rem;       
@@ -95,7 +94,7 @@
 }
 
 /* ה"זנב" המקורי שלך */
-.speech-bubble::after {
+.speech-bubble-s::after {
   content: '';
   position: absolute;
   bottom: -25px;           
@@ -127,7 +126,7 @@
   }
 
   /* בועת הדיבור הופכת לחלק מהזרימה ולא מרחפת */
-  .speech-bubble {
+  .speech-bubble-s {
     position: relative; 
     top: 0;             
     left: 0;            
@@ -158,7 +157,7 @@
   }
 
   /* ממרכז את הזנב בתחתית הבועה שיצביע ישירות למטה אל החייל */
-  .speech-bubble::after {
+  .speech-bubble-s::after {
     right: auto;
     left: 50%;
     transform: translateX(-50%);

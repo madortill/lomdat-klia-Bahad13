@@ -14,7 +14,11 @@ import OpenPage from './components/OpenPage.vue';
 import PageTwo from './components/PageTwo.vue';
 import Importance from './components/Importance.vue';
 import ShiftPage from './components/ShiftPage.vue';
+import Deposit  from './components/Deposit.vue';
+import Say from './components/Say.vue'; 
 import RedOrderPage from './components/RedOrderPage.vue';
+import Annexation from './components/Annexation.vue';
+import Complaint from './components/Complaint.vue';
 import FoldersPage from './components/FoldersPage.vue';
 // import ComplaintPage from './components/ComplaintPage.vue';
 
@@ -27,7 +31,11 @@ export default {
     PageTwo,
     Importance,
     ShiftPage,
+    Deposit,
+    Say,
     RedOrderPage,
+    Annexation,
+    Complaint,
     FoldersPage,
     // ComplaintPage,
     // Page2
@@ -40,7 +48,11 @@ export default {
          "PageTwo",
          "Importance",
          "ShiftPage",
+         "Deposit",
+         "Say",
          "RedOrderPage",
+         "Annexation",
+         "Complaint",
          "FoldersPage"
         //  "ComplaintPage"
         // "Page3"
