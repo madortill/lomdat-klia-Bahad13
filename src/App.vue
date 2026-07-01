@@ -19,7 +19,12 @@ import Say from './components/Say.vue';
 import RedOrderPage from './components/RedOrderPage.vue';
 import Annexation from './components/Annexation.vue';
 import Complaint from './components/Complaint.vue';
+import ComplaintPage from './components/ComplaintPage.vue';
 import FoldersPage from './components/FoldersPage.vue';
+import Practice from './components/practice.vue';
+import AmericanQuestionsPage from './components/AmericanQuestionsPage.vue';
+import LastPage from './components/lastPage.vue';
+
 // import ComplaintPage from './components/ComplaintPage.vue';
 
 // import Page2 from './components/Page2.vue'; 
@@ -36,7 +41,11 @@ export default {
     RedOrderPage,
     Annexation,
     Complaint,
+    ComplaintPage,
     FoldersPage,
+    Practice,
+    AmericanQuestionsPage, 
+    LastPage
     // ComplaintPage,
     // Page2
   },
@@ -53,7 +62,11 @@ export default {
          "RedOrderPage",
          "Annexation",
          "Complaint",
-         "FoldersPage"
+         "ComplaintPage",
+         "FoldersPage",
+         "Practice",
+         "AmericanQuestionsPage",
+         "LastPage"
         //  "ComplaintPage"
         // "Page3"
       ],
@@ -67,12 +80,14 @@ export default {
   },
   methods: {
     nextPage() {
-      if (this.currentPageIndex < this.pageOrder.length - 1) {
-        this.currentPageIndex++;
-      } else {
-        console.log("הגעת לסוף הלומידה!");
-      }
-    },
+  if (this.currentPageIndex < this.pageOrder.length - 1) {
+    this.currentPageIndex++;
+  } else {
+    // 🌟 כאן קורה הקסם: אם המשתמש הגיע לעמוד האחרון (LastPage) ולחץ, מחזירים אותו לאינדקס 0
+    console.log("מאתחלים את הלומדה וחוזרים לעמוד הראשון!");
+    this.currentPageIndex = 0;
+  }
+},
     prevPage() {
       if (this.currentPageIndex > 0) {
         this.currentPageIndex--;

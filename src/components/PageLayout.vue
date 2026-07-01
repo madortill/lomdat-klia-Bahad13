@@ -3,11 +3,11 @@
     
     <header class="layout-header">
       <div class="header-right">
-        <div class="back-btn" @click="goBack">
-          <img src="@/assets/media/backBTN.svg" alt="back" class="back-btn-img" />
-          <p class="back-btn-text">{{ backText }}</p>
-        </div>
-      </div>
+  <div v-if="showBack" class="back-btn" @click="goBack">
+    <img src="@/assets/media/backBTN.svg" alt="back" class="back-btn-img" />
+    <p class="back-btn-text">{{ backText }}</p>
+  </div>
+</div>
 
       <div class="header-center">
         <slot name="header-content"></slot>
@@ -27,9 +27,9 @@
 
     <footer class="layout-footer">
       <div 
-        :class="['next-btn', { 'disabled': isNextDisabled }]" 
-        @click="nextPage"
-      >
+  :class="['next-btn', { 'disabled': isNextDisabled }]" 
+  @click="!isNextDisabled && nextPage()"
+>
         <span class="next-btn-text">{{ nextText }}</span>
       </div>
     </footer>
@@ -42,10 +42,14 @@ export default {
   name: "PageLayout",
   emits: ["next", "back"],
   props: {
-    // ה-prop החדש שמנהל את חסימת כפתור הבא
     isNextDisabled: {
       type: Boolean,
       default: false
+    },
+    // ה-prop החדש
+    showBack: {
+      type: Boolean,
+      default: true // כברירת מחדל תמיד מוצג
     }
   },
   data() {

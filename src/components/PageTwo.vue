@@ -42,7 +42,7 @@
   
   position: relative;
   z-index: 2;
-  background-color: rgba(255, 255, 255, 0.6); /* 60% לבן */
+  background-color:  rgba(239, 241, 246, 0.95); /* 60% לבן */
   
   /* החלפנו ל-px או rem כי 5% עלול לעוות את הפינות במסכים רחבים */
   border-radius: 15px; 
