@@ -1,10 +1,6 @@
 <template>
     <page-layout @next="$emit('next')" @back="$emit('back')">
       
-      <!-- <template #header-content>
-        <h1 class="page-title">נושא שיעור: מערכות רכב</h1>
-      </template> -->
-  
       <template #main-content>
         <div class="my-content">
   <h2> בלומדה זו נלמד את חשיבות אסמכתאות הכליאה</h2>
