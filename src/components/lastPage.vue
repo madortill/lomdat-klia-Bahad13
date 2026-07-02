@@ -200,7 +200,7 @@
     position: relative;
     z-index: 2;
     margin-left: 2vw;
-   
+   width: 40vw;
     background-color: rgba(255, 255, 255, 0.6); /* 60% לבן */
     border-radius: 5%;
     padding: 5vw; 
@@ -209,7 +209,7 @@
   
   .start-text-title {
     font-family: "ElonWiess";
-    font-size: 5rem;
+    font-size: 4rem;
     text-align: center;
   }
   
@@ -218,14 +218,15 @@
     font-family: 'Rubik';
     font-weight: 300;
     font-style: italic;
-    font-size: 2rem;
+    font-size: 1.5rem;
     margin-top: 1rem;
   }
   
   /* כפתור כניסה - ממוקם כעת באופן מוחלט ביחס לקונטיינר כדי שיהיה בצד שמאל */
   .last-btn {
     position: absolute;
-    left: 15vw; /* מרחק קבוע מצד שמאל של המסך */
+    left: 42vw; /* מרחק קבוע מצד שמאל של המסך */
+    top: 80vh;
     z-index: 2;
     padding: 1.5vh 2vw;
     background-color: #992211;

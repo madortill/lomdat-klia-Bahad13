@@ -30,7 +30,7 @@ export default {
          <div class="content-container">
            <!-- עטיפה לתמונה כדי שהסיבוב לא ישבור את ה-Flexbox -->
            <div class="image-wrapper">
-             <img src="@/assets/media/files/deposit.jpeg" alt="tofes" class="sipoach-tofes"/>
+             <img src="@/assets/media/files/Annextion.jpeg" alt="tofes" class="sipoach-tofes"/>
            </div>
            <p class="sipoach-text">
              צו סיפוח זה מורה על התייצבות למעצר מהיחידה למטרת כליארה ולמטרת חזרה ליחידה לאחר שחרור
@@ -72,11 +72,11 @@ export default {
   /* עיצוב התמונה והסיבוב שלה */
   .sipoach-tofes {
     /* כאן קורה הסיבוב! אם היא מסתובבת לכיוון הלא נכון, שני ל- -90deg */
-    transform: rotate(90deg);   
+
     
     /* בגלל שהתמונה המקורית הייתה לאורך (גבוהה), כשאנחנו מסובבים אותה לרוחב, 
        הגובה המקורי שלה הופך להיות הרוחב החדש שלה. לכן נגדיר את ה-max-width */
-    max-width: 35vw;            
+    max-width: 45vw;            
     height: auto;               
     object-fit: contain;
   }

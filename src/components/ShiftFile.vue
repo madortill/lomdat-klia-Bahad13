@@ -1,52 +1,58 @@
 <template>
     <PageLayout :isNextDisabled="!allHotspotsClicked" @next="$emit('next')" @back="$emit('back')">
       <template #main-content>
-        <div class="interactive-form-container">
+        <div class="interactive-center-container">
           
-          <!-- צד ימין: הטופס עם האזורים הלחיצים -->
+          <!-- הטופס ממורכז לחלוטין במסך -->
           <div class="form-wrapper">
-            <img src="@/assets/media/files/.jpeg" alt="Form" class="form-image" />
+            <img src="@/assets/media/files/shift.jpeg" alt="Form" class="form-image" />
             
-            <!-- נקודה חמה 1: לדוגמה - חתימה -->
+            <!-- נקודה חמה 1: לשונית נפתחת משמאל (tooltip-left) -->
             <div 
               class="hotspot" 
               :class="{ 'clicked': clickedHotspots.includes(1), 'active': activeTab === 1 }"
-              style="top: 20%; left: 15%; width: 25%; height: 10%;" 
+              style="top: 20%; left: 11%; width: 77%; height: 5%;" 
               @click="handleHotspotClick(1)"
-            ></div>
+            >
+              <!-- הלשונית הקטנה של נקודה 1 -->
+              <div class="tooltip-box tooltip-left" v-if="activeTab === 1">
+                <h3>פרטים </h3>
+                <p>פרטיו של  הכלוא  </p>
+              </div>
+            </div>
   
-            <!-- נקודה חמה 2: לדוגמה - תאריך -->
+            <!-- נקודה חמה 2: לשונית נפתחת מימין (tooltip-right) -->
             <div 
               class="hotspot" 
               :class="{ 'clicked': clickedHotspots.includes(2), 'active': activeTab === 2 }"
-              style="top: 45%; left: 60%; width: 30%; height: 8%;" 
+              style="top: 31%; left: 10%; width: 77%; height: 25%;" 
               @click="handleHotspotClick(2)"
-            ></div>
-  
-            <!-- נקודה חמה 3: לדוגמה - פרטים אישיים -->
+            >
+              <!-- הלשונית הקטנה של נקודה 2 -->
+              <div class="tooltip-box tooltip-right" v-if="activeTab === 2">
+                <h3>פרטים </h3>
+                <p>פרטים אודות החייל ומעצרו</p>
+              </div>
+            </div>
+           
             <div 
               class="hotspot" 
               :class="{ 'clicked': clickedHotspots.includes(3), 'active': activeTab === 3 }"
-              style="top: 75%; left: 40%; width: 45%; height: 12%;" 
+              style="top: 77%; left: 11.5%; width: 77%; height: 8%;" 
               @click="handleHotspotClick(3)"
-            ></div>
+            >
+              <!-- הלשונית הקטנה של נקודה 2 -->
+              <div class="tooltip-box tooltip-right" v-if="activeTab === 3">
+                <h3>חתימות </h3>
+                <p>ייחתם על ידי הגורם המקבל</p>
+              </div>
+            </div>
+           
           </div>
   
-          <!-- צד שמאל: הלשונית הצידית שמציגה הסברים -->
-          <div class="explanation-sidebar">
-            <div v-if="activeTab === null" class="sidebar-placeholder">
-              <p>לחצו על האזורים המודגשים בטופס כדי לקרוא את ההסברים</p>
-            </div>
-            
-            <div v-else class="sidebar-content">
-              <h3>{{ currentExplanation.title }}</h3>
-              <p>{{ currentExplanation.text }}</p>
-            </div>
-            
-            <!-- מד התקדמות קטן המראה כמה נשאר ללחוץ -->
-            <div class="progress-text">
-              נבדקו {{ clickedHotspots.length }} מתוך {{ totalHotspots }} אזורים
-            </div>
+          <!-- מד התקדמות צף קטן בתחתית המסך (אופציונלי, בשביל הנוחות) -->
+          <div class="progress-floating-tag">
+            נבדקו {{ clickedHotspots.length }} מתוך {{ totalHotspots }} אזורים
           </div>
   
         </div>
@@ -64,35 +70,28 @@
     
     data() {
       return {
-        activeTab: null,          // איזה הסבר מוצג כרגע בלשונית
-        clickedHotspots: [],     // מערך ששומר את האינדקסים של הריבועים שנלחצו כבר
-        totalHotspots: 3,        // סך הכל אזורים שחובה ללחוץ עליהם קודם
-        
-        // מאגר המידע של ההסברים - את יכולה לערוך את הטקסטים כאן בקלות
-        explanations: {
-          1: { title: "אזור החתימה", text: "כאן נדרשת חתימת מפקד בדרגת רס\"ן ומעלה בלבד. שימו לב שלא ניתן לאשר את הטופס ללא חתימה זו." },
-          2: { title: "תאריך התייצבות", text: "התאריך המופיע כאן חייב להיות תואם ליום פתיחת תיק הכליאה בפועל ולא יאוחר מ-24 שעות ממועד ההנפקה." },
-          3: { title: "פרטי הכלוא", text: "ודאו שכל הפרטים האישיים (מספר אישי, שם מלא, ויחידה) מולאו בצורה קריאה ותקינה ללא מחיקות." }
-        }
+        activeTab: null,          // איזו לשונית פתוחה כרגע
+        clickedHotspots: [],     // מערך של הריבועים שנלחצו
+        totalHotspots: 3         // סך הכל ריבועים שצריך ללחוץ עליהם
       };
     },
     
     computed: {
-      // בודק האם המשתמש לחץ על כל האזורים הנדרשים
       allHotspotsClicked() {
         return this.clickedHotspots.length === this.totalHotspots;
-      },
-      // מחזיר את הכותרת והמלל של הלשונית הפעילה כרגע
-      currentExplanation() {
-        return this.explanations[this.activeTab] || { title: "", text: "" };
       }
     },
     
     methods: {
       handleHotspotClick(id) {
-        this.activeTab = id; // מעדכן את הלשונית הצידית להציג את התוכן של הריבוע הזה
+        // אם לוחצים על לשונית שכבר פתוחה - נסגור אותה (Toggle)
+        if (this.activeTab === id) {
+          this.activeTab = null;
+        } else {
+          this.activeTab = id;
+        }
         
-        // אם הריבוע הזה עדיין לא נמצא במערך הלחיצות, נוסיף אותו
+        // הוספה למערך הלחיצות לאישור כפתור הבא
         if (!this.clickedHotspots.includes(id)) {
           this.clickedHotspots.push(id);
         }
@@ -102,103 +101,123 @@
   </script>
   
   <style scoped>
-  /* סידור העמוד: טופס מימין, לשונית משמאל */
-  .interactive-form-container {
+  /* מרחב ראשי - ממרכז את הטופס לחלוטין */
+  .interactive-center-container {
     display: flex;
-    flex-direction: row-reverse; /* עבודה ב-RTL (ימין לשמאל) */
-    align-items: flex-start;
+    flex-direction: column;
+    align-items: center;
     justify-content: center;
-    gap: 4vw;
-    width: 90vw;
-    margin: 0 auto;
+    width: 100%;
+    height: 100%;
+    position: relative;
   }
   
-  /* אזור הטופס */
+  /* קונטיינר הטופס */
   .form-wrapper {
-    position: relative; /* קריטי עבור המיקום של ה-hotspots */
-    width: 40vw;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    position: relative; /* מאפשר לריבועים וללשוניות להתמקם לפי אחוזים מהתמונה */
+    width: 38vw;        /* גודל נוח שמשאיר מקום ללשוניות בצדדים */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
     border-radius: 8px;
-    overflow: hidden;
+    background: white;
   }
   
   .form-image {
     width: 100%;
-    height: auto;
+    height: 88vh;
     display: block;
   }
   
-  /* עיצוב הריבועים השקופים על הטופס */
+  /* הריבועים הלחיצים על הטופס */
   .hotspot {
     position: absolute;
-    background-color: rgba(241, 196, 15, 0.2); /* צבע צהוב חלש ושקוף כברירת מחדל */
+    background-color: rgba(241, 196, 15, 0.2);
     border: 2px dashed #f1c40f;
     border-radius: 4px;
     cursor: pointer;
-    transition: all 0.2s ease;
+    transition: background-color 0.2s ease;
   }
   
-  /* אפקט במעבר עכבר */
   .hotspot:hover {
-    background-color: rgba(241, 196, 15, 0.4);
-    transform: scale(1.02);
+    background-color: rgba(241, 196, 15, 0.35);
   }
   
-  /* עיצוב ריבוע שכבר לחצו עליו */
   .hotspot.clicked {
-    background-color: rgba(46, 204, 113, 0.15); /* הופך לירוק עדין */
     border-color: #2ecc71;
+    background-color: rgba(46, 204, 113, 0.1);
   }
   
-  /* עיצוב הריבוע שנבחר כרגע ומציג את הלשונית שלו */
   .hotspot.active {
-    background-color: rgba(52, 152, 219, 0.25); /* כחול בולט */
     border-color: #3498db;
-    box-shadow: 0 0 10px rgba(52, 152, 219, 0.5);
+    background-color: rgba(52, 152, 219, 0.15);
   }
   
-  /* הלשונית הצידית להסברים */
-  .explanation-sidebar {
-    width: 25vw;
-    background-color: #ffffff;
-    border-right: 6px solid #073799; /* קו קישוט כחול בצד */
+  /* 🌟 עיצוב בועת הלשונית הכללית */
+  .tooltip-box {
+    position: absolute;
+    background-color: #073799;
+    color: #ffffff;
+    padding: 1.2rem;
     border-radius: 8px;
-    padding: 2rem;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-    min-height: 300px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+    z-index: 100;
+    width: 16vw;          /* רוחב הלשונית הקטנה */
     direction: rtl;
+    cursor: default;     /* מניע סימון טקסט בטעות */
+    pointer-events: auto; /* מאפשר לגעת בלשונית עצמה */
   }
   
-  .sidebar-placeholder {
-    color: #7f8c8d;
-    font-size: 1.5rem;
-    text-align: center;
-    margin-top: 4rem;
-    font-style: italic;
-  }
-  
-  .sidebar-content h3 {
-    color: #073799;
-    font-size: 2.2rem;
-    margin-bottom: 1rem;
+  .tooltip-box h3 {
+    color: #FFF2B4;
+    font-size: 1.6rem;
+    margin-bottom: 0.5rem;
     font-family: sans-serif;
   }
   
-  .sidebar-content p {
-    color: #2c3e50;
-    font-size: 1.6rem;
-    line-height: 1.5;
+  .tooltip-box p {
+    font-size: 1.2rem;
+    line-height: 1.4;
+    margin: 0;
+    font-family: sans-serif
   }
   
-  .progress-text {
+  /* 📍 מיקומים שונים ללשוניות בהתאם למחלקה (Class) */
+  
+  /* פתיחה משמאל לריבוע */
+  .tooltip-left {
+    top: 50%;
+    right: 105%; /* זורק את הלשונית שמאלה מהריבוע */
+    transform: translateY(-50%);
+  }
+  
+  /* פתיחה מימין לריבוע */
+  .tooltip-right {
+    top: 50%;
+    left: 105%;  /* זורק את הלשונית ימינה מהריבוע */
+    transform: translateY(-50%);
+  }
+  
+  /* פתיחה מעל הריבוע */
+  .tooltip-top {
+    bottom: 110%; /* זורק את הלשונית מעל הריבוע */
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  
+  /* פתיחה מתחת לריבוע */
+  .tooltip-bottom {
+    top: 110%;  /* זורק את הלשונית מתחת לריבוע */
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  
+  /* תגית ההתקדמות הצפה */
+  .progress-floating-tag {
+    margin-top: 2vh;
+    background-color: rgba(7, 55, 153, 0.85);
+    color: white;
+    padding: 0.5rem 1.5rem;
+    border-radius: 20px;
     font-size: 1.2rem;
-    color: #7f8c8d;
-    text-align: left;
-    border-top: 1px solid #ecf0f1;
-    padding-top: 1rem;
-    margin-top: 2rem;
+    font-family: sans-serif;
   }
   </style>

@@ -14,7 +14,9 @@ import OpenPage from './components/OpenPage.vue';
 import PageTwo from './components/PageTwo.vue';
 import Importance from './components/Importance.vue';
 import ShiftPage from './components/ShiftPage.vue';
+import ShiftFile from './components/ShiftFile.vue';
 import Deposit  from './components/Deposit.vue';
+import DepositFile from './components/DepositFile.vue';
 import Say from './components/Say.vue'; 
 import SayPage from './components/SayPage.vue';
 import RedOrderPage from './components/RedOrderPage.vue';
@@ -38,7 +40,9 @@ export default {
     PageTwo,
     Importance,
     ShiftPage,
+    ShiftFile,
     Deposit,
+    DepositFile,
     Say,
     SayPage,
     RedOrderPage,
@@ -61,7 +65,9 @@ export default {
          "PageTwo",
          "Importance",
          "ShiftPage",
+         "ShiftFile",
          "Deposit",
+         "DepositFile",
          "Say",
          "SayPage",
          "RedOrderPage",

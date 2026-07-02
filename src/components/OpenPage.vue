@@ -25,7 +25,7 @@
       <p class="list-text-about">רב"ט ירין חנה טובול</p>
 
       <h3 class="list-text-about">מומחית תוכן:</h3>
-      <p class="list-text-about">סגן ג'ולי </p>
+      <p class="list-text-about">סגן ג'ולי יצחק</p>
       
 
       <h3 class="list-text-about">רמ"ד טי"ל:</h3>

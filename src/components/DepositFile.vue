@@ -5,19 +5,19 @@
           
           <!-- הטופס ממורכז לחלוטין במסך -->
           <div class="form-wrapper">
-            <img src="@/assets/media/files/say.jpeg" alt="Form" class="form-image" />
+            <img src="@/assets/media/files/deposit.jpeg" alt="Form" class="form-image" />
             
             <!-- נקודה חמה 1: לשונית נפתחת משמאל (tooltip-left) -->
             <div 
               class="hotspot" 
               :class="{ 'clicked': clickedHotspots.includes(1), 'active': activeTab === 1 }"
-              style="top: 22%; left: 4%; width: 93%; height: 6%;" 
+              style="top: 11%; left: 8%; width: 85%; height: 5%;" 
               @click="handleHotspotClick(1)"
             >
               <!-- הלשונית הקטנה של נקודה 1 -->
               <div class="tooltip-box tooltip-left" v-if="activeTab === 1">
                 <h3>פרטים </h3>
-                <p>פרטיו של גובה האמרה  </p>
+                <p> נכתוב את פרטי הכלוא </p>
               </div>
             </div>
   
@@ -25,16 +25,28 @@
             <div 
               class="hotspot" 
               :class="{ 'clicked': clickedHotspots.includes(2), 'active': activeTab === 2 }"
-              style="top: 85%; left: 4%; width: 92%; height: 7%;" 
+              style="top: 78%; left: 7%; width: 88%; height: 8%;" 
               @click="handleHotspotClick(2)"
             >
               <!-- הלשונית הקטנה של נקודה 2 -->
               <div class="tooltip-box tooltip-right" v-if="activeTab === 2">
                 <h3>חתימות </h3>
-                <p>לא לשכוח להחתים במהלך כל האמרה</p>
+                <p>     נחתום לאחר שרשמנו הכל</p>
               </div>
             </div>
            
+            <div 
+              class="hotspot" 
+              :class="{ 'clicked': clickedHotspots.includes(3), 'active': activeTab === 3 }"
+              style="top: 87.5%; left: 7%; width: 88%; height: 8.5%;" 
+              @click="handleHotspotClick(3)"
+            >
+              <!-- הלשונית הקטנה של נקודה 2 -->
+              <div class="tooltip-box tooltip-right" v-if="activeTab === 3">
+                <h3>חתימות </h3>
+                <p>        כאן יחתום המלווה שייקח את הכלוא בעת העברה על כך שלקח את הפיקדוןמסגל המעצר</p>
+              </div>
+            </div>
           </div>
   
           <!-- מד התקדמות צף קטן בתחתית המסך (אופציונלי, בשביל הנוחות) -->
@@ -59,7 +71,7 @@
       return {
         activeTab: null,          // איזו לשונית פתוחה כרגע
         clickedHotspots: [],     // מערך של הריבועים שנלחצו
-        totalHotspots: 2         // סך הכל ריבועים שצריך ללחוץ עליהם
+        totalHotspots: 3         // סך הכל ריבועים שצריך ללחוץ עליהם
       };
     },
     
