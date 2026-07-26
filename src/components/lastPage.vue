@@ -219,7 +219,7 @@
     font-weight: 300;
     font-style: italic;
     font-size: 1.5rem;
-    margin-top: 1.1rem;
+    margin-top: 1rem;
   }
   
   /* כפתור כניסה - ממוקם כעת באופן מוחלט ביחס לקונטיינר כדי שיהיה בצד שמאל */
