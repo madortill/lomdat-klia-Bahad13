@@ -278,7 +278,7 @@ import p4 from '@/assets/media/book/pic4.jpeg';
 import p5 from '@/assets/media/book/pic5.jpeg';
 import p6 from '@/assets/media/book/pic6.jpeg'; 
 import p7 from '@/assets/media/book/pic7.jpeg'; 
-import medicalPdf from '@/assets/media/book/pic.png';
+
 
 const imagesList = {
   cover: coverImg,
@@ -289,7 +289,7 @@ const imagesList = {
   page5: p5,
   page6: p6,
   page7: p7,
-  pdf: medicalPdf
+  
 };
 // ==========================================
 
