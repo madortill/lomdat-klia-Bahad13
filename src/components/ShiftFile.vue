@@ -123,7 +123,7 @@
   
   .form-image {
     width: 100%;
-    height: 88vh;
+    height: 84vh;
     display: block;
   }
   

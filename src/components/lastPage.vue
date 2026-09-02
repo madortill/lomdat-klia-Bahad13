@@ -14,7 +14,17 @@
       <div class="start-text">
         <h1 class="start-text-title">!!!סיימתם את הלומדה בהצלחה</h1>
         <p class="start-text-fill">סיימתם את הלומדה והצלחתם לענות על כל השאלות ומילאתם</p>
-        <p class="start-text-fill">את התיקיות בטפסים כמבוקש</p>    
+        <div class="score-box">
+  <p class="score-title">הציון שלכם</p>
+
+  <p class="score-number">
+    {{ score }} / {{ totalQuestions }}
+  </p>
+
+  <p class="score-percentage">
+    {{ percentage }}%
+  </p>
+</div>   
         <p class="start-text-fill">אם תרצו תוכלו לחזור לתחילת הלומדה </p>
   
       </div>
@@ -44,25 +54,65 @@
     </div>
   </template>
   
+
   <script>
-  export default {
-    name: "OpenPage",
-    emits: ["next"],
-    data() {
-        return {
-          showAbout: false,
-          infoSymbol: "i"
-        };
-      },
-    
-      methods: {
-        toggleAbout() {
-          this.showAbout = !this.showAbout;
-          this.infoSymbol = this.infoSymbol === "i" ? "x" : "i";
-        },
-      }
+export default {
+  name: "LastPage",
+
+  emits: ["next"],
+
+  data() {
+    return {
+      showAbout: false,
+      infoSymbol: "i",
+
+      // ציון הבוחן
+      score: 0,
+      totalQuestions: 11
     };
-  </script>
+  },
+
+  computed: {
+    percentage() {
+      if (!this.totalQuestions) return 0;
+
+      return Math.round(
+        (this.score / this.totalQuestions) * 100
+      );
+    }
+  },
+
+  mounted() {
+    this.loadScore();
+  },
+
+  methods: {
+    toggleAbout() {
+      this.showAbout = !this.showAbout;
+      this.infoSymbol = this.infoSymbol === "i" ? "x" : "i";
+    },
+
+    loadScore() {
+      const savedScore = sessionStorage.getItem(
+        "americanQuestionsScore"
+      );
+
+      const savedTotal = sessionStorage.getItem(
+        "americanQuestionsTotal"
+      );
+
+      this.score = savedScore
+        ? Number(savedScore)
+        : 0;
+
+      this.totalQuestions = savedTotal
+        ? Number(savedTotal)
+        : 11;
+    }
+  }
+};
+</script>
+
   
   <style scoped>
   /* הגדרות גלובליות לאיפוס - מוודא שהקונטיינר באמת תופס את כל המסך */
@@ -246,4 +296,32 @@
     font-size: 2.5rem;
     color: #ffffff;
   }
+
+  .score-box {
+  margin: 2rem auto;
+  text-align: center;
+}
+
+.score-title {
+  font-family: "Rubik", sans-serif;
+  font-size: 1.4rem;
+  font-weight: 500;
+  margin: 0;
+}
+
+.score-number {
+  font-family: "ElonWiess", sans-serif;
+  font-size: 4.5rem;
+  color: #073799;
+  margin: 0.3rem 0 0;
+  line-height: 1;
+}
+
+.score-percentage {
+  font-family: "Rubik", sans-serif;
+  font-size: 1.4rem;
+  font-weight: 500;
+  color: #992211;
+  margin: 0.5rem 0 0;
+}
   </style>

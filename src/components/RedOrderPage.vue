@@ -166,7 +166,7 @@ export default {
           <div 
             class="hotspot" 
             :class="{ 'clicked': clickedHotspots.includes(1), 'active': activeTab === 1 }"
-            style="top: 17%; left: 20%; width: 58%; height: 6%;" 
+            style="top: 24%; left: 8%; width: 82%; height: 5%;" 
             @click="handleHotspotClick(1)"
           >
             <!-- הלשונית הקטנה של נקודה 1 -->
@@ -180,7 +180,7 @@ export default {
           <div 
             class="hotspot" 
             :class="{ 'clicked': clickedHotspots.includes(2), 'active': activeTab === 2 }"
-            style="top: 25%; left: 20%; width: 58%; height: 6%;" 
+            style="top: 32%; left: 8%; width: 82%; height: 5%;" 
             @click="handleHotspotClick(2)"
           >
             <!-- הלשונית הקטנה של נקודה 2 -->
@@ -193,7 +193,7 @@ export default {
           <div 
             class="hotspot" 
             :class="{ 'clicked': clickedHotspots.includes(3), 'active': activeTab === 3 }"
-            style="top: 51%; left: 20%; width: 59%; height: 4%;" 
+            style="top: 55%; left: 8%; width: 83%; height: 3.5%;" 
             @click="handleHotspotClick(3)"
           >
             <!-- הלשונית הקטנה של נקודה 2 -->
@@ -206,7 +206,7 @@ export default {
           <div 
             class="hotspot" 
             :class="{ 'clicked': clickedHotspots.includes(4), 'active': activeTab === 4 }"
-            style="top: 56%; left: 20%; width: 58.5%; height: 8%;" 
+            style="top: 61%; left: 8%; width: 82%; height: 5%;" 
             @click="handleHotspotClick(4)"
           >
             <!-- הלשונית הקטנה של נקודה 2 -->
@@ -219,7 +219,7 @@ export default {
           <div 
             class="hotspot" 
             :class="{ 'clicked': clickedHotspots.includes(5), 'active': activeTab === 5 }"
-            style="top: 79%; left: 20%; width: 58%; height: 6%;" 
+            style="top: 80.5%; left: 8%; width: 82%; height: 5%;" 
             @click="handleHotspotClick(5)"
           >
             <!-- הלשונית הקטנה של נקודה 2 -->

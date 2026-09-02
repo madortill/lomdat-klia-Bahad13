@@ -1,5 +1,9 @@
 <template>
-  <page-layout @next="$emit('next')" @back="$emit('back')">
+<page-layout
+  @next="$emit('next')"
+  @back="$emit('back')"
+  :is-next-disabled="isTyping"
+>
     <template #main-content>
       <div class="soldier-layout">
         
@@ -30,56 +34,56 @@ export default {
   name: "ShiftPage",
   components: { PageLayout },
   emits: ["next", "back"],
+
   data() {
     return {
-      // 1. המערך המקורי שלך - לא לגעת
       originalInfoArr: [
         "לכל חייל שנעצר / נכלא אנו מחויבים להיות בעלי אסמכתא המאשרת את עיכובו או מעצרו.",
         "אסמכתאות אלו הינן אישור בעל תוקף משפטי המאשר את החזקת החייל תחת משמורת חוקית.",
         "<strong>כמו כן, בלי כל המסמכים הנחוצים הכנסתו למעצר לא תתאפשר.</strong>"
       ],
-      // 2. מערך ריק שיתמלא באותיות בזמן אמת
+
       typedLines: [],
-      // הגדרות מהירות
-      typeSpeed: 40,   // מהירות הקלדה (מילישניות לאות)
-      lineDelay: 1000, // כמה זמן לחכות בין סיום שורה לתחילת השורה הבאה
+
+      typeSpeed: 40,
+      lineDelay: 800,
+
+      isTyping: true
     };
   },
+
   mounted() {
-    // מפעיל את אפקט ההקלדה כשהקומפוננטה עולה
     this.startTypingEffect();
   },
+
   methods: {
-    // הפונקציה המרכזית שמנהלת את אפקט ההקלדה האמיתי
     async startTypingEffect() {
-      // 1. מאתחלים את המערך המוצג
+      this.isTyping = true;
+
       this.typedLines = this.originalInfoArr.map(() => "");
 
-      // 2. לולאה על פני כל השורות במערך המקורי
       for (let i = 0; i < this.originalInfoArr.length; i++) {
-        // ממתינים להקלדה של השורה הנוכחית
         await this.typeLine(i);
-        // אם זו לא השורה האחרונה, מחכים קצת לפני הבאה
+
         if (i < this.originalInfoArr.length - 1) {
           await this.wait(this.lineDelay);
         }
       }
+
+      // כל הטקסט סיים להיכתב
+      this.isTyping = false;
     },
 
-    // פונקציית עזר המקלידה שורה בודדת (מחזירה Promise כדי שנוכל לחכות לסיומה)
     typeLine(lineIndex) {
       return new Promise((resolve) => {
         const fullText = this.originalInfoArr[lineIndex];
         let currentCharacterIndex = 0;
 
-        // טיימר שרץ כל 40 מילישניות
         const interval = setInterval(() => {
           if (currentCharacterIndex < fullText.length) {
-            // הוספת אות אחת למערך שמוצג במסך
             this.typedLines[lineIndex] += fullText[currentCharacterIndex];
             currentCharacterIndex++;
           } else {
-            // סיימנו את השורה - מנקים את הטיימר ומסיימים את ה-Promise
             clearInterval(interval);
             resolve();
           }
@@ -87,12 +91,11 @@ export default {
       });
     },
 
-    // פונקציית עזר להמתנה פשוטה
     wait(ms) {
       return new Promise(resolve => setTimeout(resolve, ms));
     }
   }
-}
+};
 </script>
 
 <style scoped>

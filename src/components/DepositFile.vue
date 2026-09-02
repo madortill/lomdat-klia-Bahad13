@@ -1,4 +1,5 @@
 <template>
+  
     <PageLayout :isNextDisabled="!allHotspotsClicked" @next="$emit('next')" @back="$emit('back')">
       <template #main-content>
         <div class="interactive-center-container">
@@ -11,7 +12,7 @@
             <div 
               class="hotspot" 
               :class="{ 'clicked': clickedHotspots.includes(1), 'active': activeTab === 1 }"
-              style="top: 11%; left: 8%; width: 85%; height: 5%;" 
+              style="top: 11%; left: 11%; width: 80%; height: 5%;" 
               @click="handleHotspotClick(1)"
             >
               <!-- הלשונית הקטנה של נקודה 1 -->
